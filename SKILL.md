@@ -33,6 +33,7 @@ The two modes are independent. Reformat mode is one-shot. Live output mode is pe
 | Jira | [rules/jira.md](rules/jira.md) |
 | GitHub (issues, PRs, comments) | [rules/github.md](rules/github.md) |
 | Plain Markdown | [rules/markdown.md](rules/markdown.md) |
+| Plain Text | [rules/plaintext.md](rules/plaintext.md) |
 
 To add a new destination, create `rules/<destination>.md` following the same structure, then add it to this table.
 
@@ -162,6 +163,7 @@ See the [examples/](examples/) folder:
 - [examples/jira.md](examples/jira.md) — formatted for Jira
 - [examples/github.md](examples/github.md) — formatted for GitHub
 - [examples/markdown.md](examples/markdown.md) — formatted as plain Markdown
+- [examples/plaintext.md](examples/plaintext.md) — formatted as plain text
 
 ## Validation checklist
 

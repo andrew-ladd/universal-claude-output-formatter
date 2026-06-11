@@ -30,6 +30,7 @@ Claude Code picks up skills automatically from `~/.claude/skills/` — no restar
 | Jira | Wiki Markup | [`rules/jira.md`](rules/jira.md) |
 | GitHub | GitHub Flavored Markdown | [`rules/github.md`](rules/github.md) |
 | Plain Markdown | CommonMark | [`rules/markdown.md`](rules/markdown.md) |
+| Plain Text | No markup | [`rules/plaintext.md`](rules/plaintext.md) |
 
 ## Usage
 
