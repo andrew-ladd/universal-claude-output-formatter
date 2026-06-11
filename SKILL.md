@@ -1,12 +1,20 @@
 # universal-output-formatter
 
-Rewrite source text or notes into the best paste-ready format for a specified destination.
+Format text for a specified destination — either by rewriting existing source text, or by producing all subsequent responses directly in the destination's format.
 
 ## When to use this skill
 
+**Reformat mode** — you have existing text to convert:
 - You have text (notes, a summary, a doc, an error log) and need it formatted for a specific tool.
 - You are copying content between tools and want it to render correctly.
 - The source text has mixed formatting that will break in the target.
+
+**Live output mode** — you want all responses formatted for a destination from now on:
+- The user says something like "reply in Slack format", "use Jira formatting", or "I'm pasting your answers into GitHub".
+- The user wants to copy-paste Claude's responses directly without any post-processing.
+- The user wants formatting to persist across multiple turns.
+
+The two modes are independent. Reformat mode is one-shot. Live output mode is persistent until cancelled.
 
 ## Supported destinations
 
@@ -27,10 +35,58 @@ To add a new destination, create `rules/<destination>.md` following the same str
 4. Rewrite unsupported constructs into the closest readable equivalent — never drop them silently.
 5. Do not add facts, examples, or opinions not present in the source.
 
+## Live output mode
+
+### Activation
+
+Activate when the user explicitly requests persistent formatting, using phrases like:
+- "format your responses for Slack"
+- "reply in Jira format"
+- "use GitHub Markdown from now on"
+- "I'm pasting your answers into [destination]"
+- "keep formatting as [destination]"
+
+On activation, confirm once: `Got it — I'll format all responses for [Destination] until you tell me to stop.`
+
+Then immediately apply the destination's rules to **every subsequent response** in the conversation, including:
+- Plain answers and explanations
+- Code explanations and summaries
+- Lists and tables you generate
+- Any text the user would paste or share
+
+### What live mode changes
+
+In live mode, every response is authored in the destination format from the start — not post-processed. This means:
+- Write bold/italic in the destination's syntax, not Markdown's.
+- Use the destination's link format for any URLs.
+- Structure responses using the destination's native constructs (mrkdwn, Wiki Markup, GFM, etc.).
+- Do not produce hybrid output that mixes formats.
+
+### What live mode does NOT change
+
+- Code blocks: always preserve content exactly.
+- Factual accuracy and completeness.
+- Response length — format to the destination, but do not pad or truncate meaning.
+
+### Deactivation
+
+Stop live mode when the user says:
+- "stop formatting"
+- "back to normal"
+- "turn off [destination] mode"
+- "reset formatting"
+- Any equivalent instruction to stop.
+
+On deactivation, confirm once: `Got it — back to standard formatting.`
+
+### Mode stacking
+
+Only one destination is active at a time. If the user requests a new destination while live mode is already on, switch immediately and confirm: `Switched to [NewDestination] format.`
+
 ## When to ask a clarifying question
 
 Ask **one** clarifying question before formatting when:
-- No destination is specified.
+- No destination is specified (reformat mode or live mode activation is ambiguous).
 - The destination is ambiguous (e.g. "a ticket" could be Jira or GitHub).
 
 Question template: `Which destination should I format this for? (Slack / Jira / GitHub / Markdown)`
