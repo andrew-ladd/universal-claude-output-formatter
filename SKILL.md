@@ -116,6 +116,24 @@ Question template: `Which destination should I format this for? (Slack / Jira / 
 
 Do not ask for clarification about style preferences — apply the rules and format.
 
+## Clipboard offer
+
+After producing formatted output, offer to copy it to the clipboard unless:
+- The user's request already included a clipboard instruction (e.g. "pipe to pbcopy", "copy to clipboard"), or
+- The output was split across multiple messages (offer only once, after the final part).
+
+Offer template: `Copy to clipboard?`
+
+If the user accepts (yes / sure / copy it / etc.), run:
+
+```bash
+pbcopy << 'EOF'
+<formatted output>
+EOF
+```
+
+Do not offer in live output mode — clipboard copy only makes sense for discrete, finished outputs.
+
 ## When to split into multiple messages
 
 Split output into multiple messages when:
