@@ -39,16 +39,28 @@ To add a new destination, create `rules/<destination>.md` following the same str
 
 ### Activation
 
-Activate when the user explicitly requests persistent formatting, using phrases like:
+Live mode has two sub-modes: **single-response** and **persistent**. Choose based on the user's phrasing.
+
+**Single-response mode** — apply the destination format to the next response only, then revert silently. No confirmation needed. Triggered by one-off phrasing like:
+- "answer in Slack format"
+- "give me that as a Jira comment"
+- "format this response for GitHub"
+- "send that in mrkdwn"
+
+**Persistent mode** — apply the destination format to all subsequent responses until cancelled. Triggered by phrasing that signals ongoing intent:
 - "format your responses for Slack"
-- "reply in Jira format"
-- "use GitHub Markdown from now on"
+- "reply in Jira format from now on"
+- "use GitHub Markdown going forward"
 - "I'm pasting your answers into [destination]"
 - "keep formatting as [destination]"
 
-On activation, confirm once: `Got it — I'll format all responses for [Destination] until you tell me to stop.`
+When in doubt about which sub-mode the user wants, default to **single-response**.
 
-Then immediately apply the destination's rules to **every subsequent response** in the conversation, including:
+On persistent mode activation, confirm once: `Got it — I'll format all responses for [Destination] until you tell me to stop.`
+
+Single-response mode needs no confirmation — just format and revert.
+
+Then (for persistent mode) immediately apply the destination's rules to **every subsequent response** in the conversation, including:
 - Plain answers and explanations
 - Code explanations and summaries
 - Lists and tables you generate
