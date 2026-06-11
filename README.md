@@ -1,6 +1,8 @@
 # universal-output-formatter
 
-A Claude Code skill that formats text for a specific destination — Slack, Jira, GitHub, or plain Markdown.
+A Claude Code skill that formats text for a specific destination — Slack, Jira, GitHub, plain Markdown, or plain text.
+
+> **Note:** Tested with Claude Code only. Behaviour in other coding agents is untested.
 
 ## Installation
 

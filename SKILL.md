@@ -1,10 +1,11 @@
 ---
 name: universal-output-formatter
 description: >
-  Format text for a specified destination (Slack, Jira, GitHub, plain Markdown). Rewrites
-  existing source text, or applies destination formatting to Claude's own responses —
-  either for one message or persistently. Use when the user wants to reformat content,
-  paste Claude's output into another tool, or says "/universal-output-formatter".
+  Claude Code only (untested in other agents). Format text for a specified destination
+  (Slack, Jira, GitHub, plain Markdown, plain text). Rewrites existing source text, or
+  applies destination formatting to Claude's own responses — either for one message or
+  persistently. Use when the user wants to reformat content, paste Claude's output into
+  another tool, or says "/universal-output-formatter".
 ---
 
 # universal-output-formatter
