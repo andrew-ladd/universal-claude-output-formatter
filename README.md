@@ -24,6 +24,8 @@ Claude Code picks up skills automatically from `~/.claude/skills/` — no restar
 - *Single-response*: "give me that as a Jira comment" — formats one reply, then reverts silently.
 - *Persistent*: "format your responses for Slack from now on" — stays on until you say "back to normal".
 
+**Clipboard offer** — after producing formatted output, the skill asks `Copy to clipboard?` and runs `pbcopy` if you confirm. Skipped if you already asked for pbcopy, or in persistent live mode.
+
 ## Supported destinations
 
 | Destination | Syntax | Rule file |
