@@ -2,6 +2,17 @@
 
 A Claude Code skill that formats text for a specific destination — Slack, Jira, GitHub, or plain Markdown.
 
+## Installation
+
+Clone or copy this skill into your Claude skills directory:
+
+```bash
+git clone https://github.com/andrew-ladd/universal-claude-output-formatter \
+  ~/.claude/skills/universal-output-formatter
+```
+
+Claude Code picks up skills automatically from `~/.claude/skills/` — no restart required. The skill is available immediately as `/universal-output-formatter`.
+
 ## What it does
 
 **Reformat mode** — paste in existing text and get it back in the correct syntax for a target tool. Handles links, emphasis, code blocks, tables, and blockquotes, rewriting unsupported constructs rather than dropping them.
