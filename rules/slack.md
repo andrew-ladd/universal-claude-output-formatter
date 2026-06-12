@@ -4,7 +4,9 @@ Slack uses **mrkdwn**, not standard Markdown. Many Markdown constructs render as
 
 ## Paste compatibility
 
-mrkdwn syntax only renders in the compose box if the user has enabled **Format messages with markup** in Slack preferences (`Preferences → Advanced → Format messages with markup`). Without this setting, pasted mrkdwn renders as literal characters. If that setting is not available or not enabled, use the plain text destination instead (`rules/plaintext.md`).
+mrkdwn syntax only renders in the compose box if the user has enabled **Format messages with markup** in Slack preferences (`Preferences → Advanced → Format messages with markup`). Without this setting, pasted mrkdwn renders as literal characters.
+
+Always format for mrkdwn by default. Only use the plain text destination if the user explicitly requests plain text.
 
 ## Supported constructs
 

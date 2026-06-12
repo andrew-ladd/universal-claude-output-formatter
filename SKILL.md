@@ -118,7 +118,7 @@ Do not ask for clarification about style preferences — apply the rules and for
 
 ## Clipboard offer
 
-After producing formatted output, offer to copy it to the clipboard unless:
+**Always** offer to copy to the clipboard immediately after producing formatted output, on the same response. The offer must appear every time — do not omit it. Exceptions:
 - The user's request already included a clipboard instruction (e.g. "pipe to pbcopy", "copy to clipboard"), or
 - The output was split across multiple messages (offer only once, after the final part).
 
